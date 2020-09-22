@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,4 +38,45 @@
     </script>
 </body>
 
+=======
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function checkStr(str1, str2) {
+            let newStr1 = str1.split("");
+            let newStr2 = str2.split("");
+            if (newStr1.length != newStr2.length) return false;
+            let check = new Object();
+            newStr1.forEach(function (element) {
+                if (check[element]) {
+                    check[element]++;
+                } else
+                    check[element] = 1;
+            });
+            newStr2.forEach((element) => {
+                check[element]--;
+
+            });
+            for (let i in check) {
+                if (check[i] !== 0)
+                    return false;
+            }
+            return true;
+        }
+
+        console.log(checkStr('hanh', 'ahnh'));
+        console.log(checkStr('abxds', 'abb'));
+        console.log(checkStr('abxo', 'abxk'));
+    </script>
+</body>
+
+>>>>>>> 12c2ff24efd7985c6467510bf3e7f1135c0f8547
 </html>
