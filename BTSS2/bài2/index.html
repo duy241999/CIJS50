@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class Person {
+            name;
+            age;
+            sex;
+            address;
+            constructor(name, age, sex, address) {
+                this.name = name;
+                this.age = age;
+                this.sex = sex;
+                this.address = address;
+            }
+            speak() {
+                console.log("Hello!")
+            }
+            introduce() {
+                console.log(`
+            Name: ${this.name}
+            Age: ${this.age}
+            Sex: ${this.sex}
+            Address: ${this.address}
+        `)
+            }
+        }
+        class Crush extends Person {
+            favorites;
+            appearance;
+            constructor(name, age, address, favorites, appearance) {
+                super(name, age, 'female', address);
+                this.favorites = favorites;
+                this.appearance = appearance;
+            }
+
+            speak() {
+                console.log("Xin lỗi! Chúng ta chỉ là bạn!");
+            }
+        }
+        class OldGirlFr extends Crush {
+            appearance;
+            constructor(name, age, address, appearance) {
+                super(name, age, 'female', address);
+                this.appearance = appearance;
+            }
+            speak() {
+                console.log("Tôi đã mất niềm tin vào tình yêu!");
+            }
+        }
+        class list {
+            owner;
+            personList = [];
+            constructor(owner, personList) {
+                this.owner = owner;
+                this.personList = personList;
+            }
+            showAll() {
+                let psList = this.personList;
+                let i = 0;
+                while (true) {
+                    if (psList[i] !== undefined) {
+                        break;
+                    } else {
+                        if (psList[i].favorites !== undefined) {
+                            console.log(`OldGirlFr name: ${psList[i].name},
+                     Age: ${psList[i].age},
+                     Address: ${psList[i].address}, 
+                     Favorites ${psList[i].favorites}`);
+                        } else
+                            console.log(`Crush name: ${psList[i].name}, 
+                    Age: ${psList[i].age}, 
+                    Address: ${psList[i].address}, 
+                    Favorites ${psList[i].favorites}, 
+                    Appearance: ${psList[i].appearance}`);
+                        i++;
+                    }
+                    break;
+                }
+
+
+            }
+            addPerson(person) {
+                if (person == "Crush") {
+                    alert('Information about your crush!');
+                    let name = prompt('Name');
+                    let age = prompt('Age');
+                    let address = prompt('Address');
+                    let favourites = prompt('Favourites');
+                    let appearance = prompt('Appearance');
+                    let cr = new Crush(name, age, address, favourites, appearance);
+                    this.personList.push(cr);
+                }
+                if (person == "OldGirlFr") {
+                    alert('Information about your OldGirlFr!');
+                    let name = prompt('Name');
+                    let age = prompt('Age');
+                    let address = prompt('Address');
+                    let appearance = prompt('Appearance');
+                    let oldGirlFr = new OldGirl(name, age, address, appearance);
+                    this.personList.push(oldGirlFr);
+                }
+            }
+        }
+        let input = prompt('Enter her Name?');
+        let person = [];
+        let listPerson = new list(input, person);
+        while (true) {
+            let key = prompt(
+                `Halo ${input}, This is show all
+                Enter 1 show list
+                Enter 2 show Crush
+                Enter 3 show OldGirlFr`);
+            if (key == '1') {
+                listPerson.showAll();
+            } else if (key == '2') {
+                listPerson.addPerson("Crush");
+            } else if (key == '3') {
+                listPerson.addPerson("oldGirlFr");
+            } else {
+                break;
+            }
+        }
+        console.log(person[1]);
+    </script>
+</body>
+
+</html>
